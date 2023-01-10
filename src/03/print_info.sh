@@ -1,0 +1,18 @@
+#!/bin/bash
+
+bash colour.sh "HOSTNAME = " "$HOSTNAME"
+bash colour.sh  "TIMEZONE = " "$TIMEZONE"
+bash colour.sh  "USER = " "$USER"
+bash colour.sh  "OS = " "$OS"
+bash colour.sh  "DATE = " "$DATE"
+bash colour.sh  "UPTIME = " "$UPTIME"
+bash colour.sh  "UPTIME_SEC = " "$UPTIME_SEC"
+bash colour.sh  "IP = " "$IP"
+bash colour.sh  "MASK = " "$MASK"
+bash colour.sh  "GATEWAY = " "$GATEWAY"
+bash colour.sh  "RAM_TOTAL = " "$RAM_TOTAL"
+bash colour.sh  "RAM_USED = " "$RAM_USED"
+bash colour.sh  "RAM_FREE = " "$RAM_FREE"
+bash colour.sh  "SPACE_ROOT = " "$SPACE_ROOT"
+bash colour.sh  "SPACE_ROOT_USED = " "$SPACE_ROOT_USED"
+bash colour.sh "SPACE_ROOT_FREE = " "$SPACE_ROOT_FREE"
