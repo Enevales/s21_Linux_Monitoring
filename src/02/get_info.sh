@@ -15,9 +15,9 @@ export RAM_TOTAL=$(vmstat -s | grep 'total memory' | awk '{printf "%.3f Gb", $1*
 export RAM_USED=$(vmstat -s | grep 'used memory' | awk '{printf "%.3f Gb", $1*1e-6}')
 export RAM_FREE=$(vmstat -s | grep 'free memory' | awk '{printf "%.3f Gb", $1*1e-6}') 
 
-export SPACE_ROOT=$(df -hT | grep "ext4" | awk '{ printf $3 }' | sed 's/[^0-9]*//g' | awk '{printf "%.3f MB", $1*1024}')
-export SPACE_ROOT_USED=$(df -hT | grep "ext4" | awk '{ printf $4 }' | sed 's/[^0-9]*//g' | awk '{printf "%.3f MB", $1*1024}')
-export SPACE_ROOT_FREE=$(df -hT | grep "ext4" | awk '{ printf $5 }' | sed 's/[^0-9]*//g' | awk '{printf "%.3f MB", $1*1024}')
+export SPACE_ROOT=$(df -hT | grep "ext4" | head -1 | awk '{ printf $3 }' | sed 's/[^0-9.]*//g' | awk '{printf "%.3f MB", $1*1024}')
+export SPACE_ROOT_USED=$(df -hT | grep "ext4" | head -1 | awk '{ printf $4 }' | sed 's/[^0-9.]*//g' | awk '{printf "%.3f MB", $1*1024}')
+export SPACE_ROOT_FREE=$(df -hT | grep "ext4" | head -1 | awk '{ printf $5 }' | sed 's/[^0-9.]*//g' | awk '{printf "%.3f MB", $1*1024}')
 
 bash print_info.sh
 

@@ -3,12 +3,11 @@ start=$(date +%s%N)
 dir=$1
 
 NUM_DIR=$(find $dir -mindepth 1 -type d | wc -l)
-TOP_DIR=$(du -h $dir | sort -hr | head -5 | awk '{if (NR>1) print $1 $2}')
+TOP_DIR=$(du -h $dir | sort -hr | head -6 | awk '{if (NR>1){i++; print NR-1 " - " $1 " " $2}}')
 NUM_FILES=$(find $dir -type f | wc -l)
 CONF_FILES=$(find $dir -type f | grep -c .conf)
 TEXT_FILES=$(find $dir -type f | grep -c .txt)
-#EXEC_FILES=$(find $dir -executable -type f | wc -l)
-EXEC_FILES=$(find $dir -type f| grep -c -e .out -e .exe -e .sh)
+EXEC_FILES=$(find $dir -executable -type f | wc -l)
 LOG_FILES=$(find $dir -type f | grep -c .log)
 ARC_FILES=$(find $dir -type f  | grep -c -e .tar -e .gz -e .zip -e .lz -e .rar)
 SYMB_FILES=$(find $dir -type l | wc -l)
@@ -24,6 +23,6 @@ printf "Archive files = %s\nSymbolic links = %s \n" "$ARC_FILES" "$SYMB_FILES"
 printf "TOP 10 files of maximum size arranged in descending order (path, size and type): \n%s \n" "$TOP_FILES"
 printf "TOP 10 executable files of the maximum size arranged in descending order: %s \n" "$TOP_EXEC"
 end=$(date +%s%N)
-runtime=$(echo "$end-$start" | bc -l | awk '{print $0/100000000}')
+runtime=$(echo "$end-$start" | bc -l | awk '{print $0/1000000000}')
 printf "Script execution time (in seconds) = %s s\n" "$runtime"
 
